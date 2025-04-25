@@ -1,0 +1,346 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box; /* So the actual content shrinks to make room for padding and border, and the total size stays as defined */
+    cursor: url("../images/Cursor Pointer/crayon.png") 16 16, pointer;
+}
+body{
+    width:100vw;
+    height:100vh;
+    font-family: "Montserrat", sans-serif; /* The main font */
+    font-weight: 400;
+    padding:20px;
+    background-color: blue;
+    overflow-x: hidden; /* Horizontal scroll hidden */
+}
+
+/* -------- To control the menu ------------ */
+
+header{ /* the header positioned in the center of the viewport */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+header h2{
+    font-family: "Fjalla One", sans-serif; /* The secundary font for titles */
+    font-weight: 700;  /* The weight of the font so it's visually bold */    
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+.open{ /* To select the button menu */
+    width:100px;
+    background-color:crimson;
+    color: beige;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+.open h2{
+    font-size: 1.5em;
+}
+nav{ /* To select the nav once it's open */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: crimson;
+    width:100vw;
+    height:100vh;
+    bottom: -100vh; /* Starts completely off-screen (at the bottom) */
+    transition: bottom 1s; /* Animation to show/hide the nav */
+}
+nav.expand{ /* To open the nav */
+    bottom: 0; /* When expanded, it slides in from the bottom */
+    display:flex;
+}
+nav ul{ /* to positioned the tabs in the center */
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    gap: 20px;
+}
+nav a{
+    text-decoration: none;
+    font-size: 3em;    
+    color:beige; 
+    font-weight: 700;
+}
+nav i{ /* to select the icons */
+    font-size: 3em;
+    margin-left:15px;
+    color:blue;
+}
+.close,
+.closeModal{ /* To select the button to close the nav */
+    display: none; /* Hidden by default only shown when the nav is expanded */
+    position: absolute; /* Positioned inside the nav */
+    bottom: -100vh; /* Initially off-screen */
+    right: 40px;
+    width:60px;
+    background-color:beige;
+    border-radius: 20px;
+    font-size: 0.6em;   
+    transition: bottom 1s; /* Same sliding animation as the nav */
+}
+nav.expand .close { /* To close the nav */
+    display:flex; /* Becomes visible when the nav expands */
+    bottom: 10vh; /* Adjusted to be above the bottom of the screen */
+}
+button { /* To personalize the button cursor */
+    cursor: url("../images/Cursor Pointer/crayon.png") 16 16, pointer;
+}
+
+/* -------- To select everything in the main div ------------ */
+
+.main{ 
+    width: 100%;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly; /* To distribuit them it evenly*/
+    align-items: center;
+    flex-wrap: wrap; /* To keep the layout vertical and responsive, with blocks automatically dropping to a new row when needed. */ /* It is very responsive, that's why when it is less than 800px inmedietly is becomes one one column, on 900px to 1200px to two columns and from then on all three */
+}
+.main h1{ /* Title called Illustration */
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700;
+    font-size:11em;
+    text-transform: uppercase;   
+    line-height: 70vh; /* controls the vertical spacing between lines of text within a paragraph or any block-level text element. */
+    margin-bottom: 70px;
+}
+
+/* -------- To select the buttons that will lead to the projects ------------ */
+
+.containerTop{
+    width:100vw;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+}
+.containerTop ul{
+    list-style:none;
+    display: flex;
+    gap:10px;
+}
+.containerTop button{ /* To select the button menu */
+    width:150px;
+    height:100px;
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700;
+    background-color:crimson;
+    color: beige;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 1.5em;    
+    margin-bottom: 20px;
+}
+
+/* -------- To select each of the projects  ------------ */
+
+.containerBottom{
+    width: 60vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 5px crimson; /* Interior border in crimson */
+    box-shadow: 0 0 0 7px black; /* Exterior border in black*/
+    border-radius: 20px;
+    text-align: center;
+}
+.containerBottom .container{
+    width:100%;
+    height:100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+.containerBottom .container.active{
+    display: flex;
+}
+.containerBottom h2{
+    text-align: center;
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700;
+    font-size: 3em;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+.containerBottom section{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.containerBottom .gallery{
+    width:80%;
+    height: 50vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.containerBottom .gallery.active{
+    display:flex;
+}
+.container .gallery{
+    display: none;
+}
+.container .gallery.active{
+    display:flex;
+}
+.container img{
+    width:100%;
+    height: 50vh;
+    object-fit:contain;
+}
+
+/* -------  To select the modal ----------- */
+
+.main .modal{
+    width:100%;
+    height:100vh;
+    display: none;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0%;
+    background-color: rgba( 0, 0, 255, 0.7);
+    z-index:3; /* Ensures the modal is on top */
+}
+.main .modal.visible{
+    display: flex;
+}
+.containerBottom button,
+.main .modal button{
+    width:70px;
+    height:70px;
+    background-color:crimson;
+    color: beige;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 1.5em;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main .modal img{
+    width:90%;
+    height:90%;
+    object-fit:contain;
+}
+
+/* -------  To select the footer ----------- */
+
+footer{ /* the header positioned in the center of the viewport */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 20px;
+}
+footer h2{
+    font-family: "Fjalla One", sans-serif; /* The secundary font for titles */
+    font-weight: 700;  /* The weight of the font so it's visually bold */    
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+
+/* -------  To make the website Responsive for different screen sizes ----------- */
+
+@media screen and (min-width:801px) and (max-width:1200px){
+    .main h1{ 
+        font-size:8em;
+        margin-top: 5%;
+    }
+    .containerBottom{
+        width: 80vw;
+    }
+}
+
+@media screen and (min-width:501px) and (max-width:800px){ /* some changes for smaller screens like tablets or some computers */
+    .main h1{ /* smaller size */
+        font-size:5em;
+        margin-top: 5%;
+    }
+    nav ul{
+        gap: 10px;
+    }
+    nav a{
+        font-size: 2em;    
+    }
+    nav i{ 
+        font-size: 2.5em;
+    }
+    .containerBottom{
+        width: 90vw;
+    }
+    .containerBottom button{
+        width: 50px;
+        height: 50px;        
+        font-size: 1.2em;  
+    }
+}
+
+
+@media screen and (min-width:130px) and (max-width:500px){ /* some changes for for phones */
+    .main h1{ /* even smaller size */
+        font-size:3em;
+        margin-top: 5%;
+    }
+    nav ul{
+        gap: 5px;
+    }
+    nav a{
+        font-size: 1.5em;    
+    }
+    nav i{ 
+        font-size: 2em;
+    }
+    .containerTop ul{
+        flex-direction: column;
+    }
+    .containerBottom{
+        width: 85vw;
+    }
+    .containerBottom section{
+        width: 80%;
+        flex-direction: column;
+    }
+    .containerBottom .gallery{
+        height: 39vh;
+    }
+    .containerBottom button{
+        width: 50px;
+        height: 50px;        
+        font-size: 1em;  
+    }
+    .containerBottom h2{
+        font-size: 1.8em;
+        margin-top: 50px;
+    }
+    .containerBottom .container:first-child img{
+        width: 300px;
+        height: 30vh;
+    }
+    .containerBottom .container:not(:first-child) img{
+        width: 300px;
+        height: 30vh;
+    }
+    .containerBottom button{
+        width: 40px;
+        height: 40px;        
+        font-size: 1em;  
+        margin: 10px;
+    }
+}

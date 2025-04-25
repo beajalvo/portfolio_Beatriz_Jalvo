@@ -1,0 +1,370 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box; /* So the actual content shrinks to make room for padding and border, and the total size stays as defined */
+    cursor: url("../images/Cursor Pointer/crayon.png") 16 16, pointer;
+}
+body{
+    width:100vw;
+    height:100vh;
+    font-family: "Montserrat", sans-serif; /* The main font */
+    font-weight: 400;
+    padding:20px;
+    background-color: blue;
+    overflow-x: hidden; /* Horizontal scroll hidden */
+}
+
+/* -------- To control the menu ------------ */
+
+header{ /* the header positioned in the center of the viewport */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+header h2{
+    font-family: "Fjalla One", sans-serif; /* The secundary font for titles */
+    font-weight: 700;  /* The weight of the font so it's visually bold */    
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+.open{ /* To select the button menu */
+    width:100px;
+    background-color:crimson;
+    color: beige;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+.open h2{
+    font-size: 1.5em;
+}
+nav{ /* To select the nav once it's open */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: crimson;
+    width:100vw;
+    height:100vh;
+    bottom: -100vh; /* Starts completely off-screen (at the bottom) */
+    transition: bottom 1s; /* Animation to show/hide the nav */
+}
+nav.expand{ /* To open the nav */
+    bottom: 0; /* When expanded, it slides in from the bottom */
+    display:flex;
+}
+nav ul{ /* to positioned the tabs in the center */
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    gap: 20px;
+}
+nav a{
+    text-decoration: none;
+    font-size: 3em;    
+    color:beige; 
+    font-weight: 700;
+}
+nav i{ /* to select the icons */
+    font-size: 3em;
+    margin-left:15px;
+    color:blue;
+}
+.close{ /* To select the button to close the nav */
+    display: none; /* Hidden by default only shown when the nav is expanded */
+    position: absolute; /* Positioned inside the nav */
+    bottom: -100vh; /* Initially off-screen */
+    right: 40px;
+    width:60px;
+    background-color:beige;
+    border-radius: 20px;
+    font-size: 0.6em;   
+    transition: bottom 1s; /* Same sliding animation as the nav */
+}
+nav.expand .close { /* To close the nav */
+    display:flex; /* Becomes visible when the nav expands */
+    bottom: 10vh; /* Adjusted to be above the bottom of the screen */
+}
+
+/* -------- To select everything in the main div ------------ */
+
+.main{ 
+    width: 100%;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly; /* To distribuit them it evenly*/
+    align-items: center;
+    flex-wrap: wrap; /* To keep the layout vertical and responsive, with blocks automatically dropping to a new row when needed. */ /* It is very responsive, that's why when it is less than 800px inmedietly is becomes one one column, on 900px to 1200px to two columns and from then on all three */
+}
+.main h1{ /* Title called Illustration */
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700;
+    font-size:11em;
+    text-transform: uppercase;   
+    line-height: 70vh; /* controls the vertical spacing between lines of text within a paragraph or any block-level text element. */
+}
+
+/* -------- To select everything in the form ------------ */
+
+.form{
+    width:100%;
+    max-width:820px;
+    height:500px;
+    background-color: crimson;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding:50px;
+    align-items: center;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    border: 7px solid black; /* Exterior border in black*/
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+.contactInfo{ /* To select div left */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center; 
+    align-items: center;    
+    margin-right: 70px;
+}
+.contactInfo h2{
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700; 
+    font-size: 2.5em;
+}
+.contactInfo p.click{
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700; 
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+.contactInfo .circle{ /* to select the circled container */
+    width:300px;
+    height:300px;
+    border-radius: 50%;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 5%;
+    border: solid 5px black;
+}
+.contactInfo .circle.black{
+    background-color: black;
+}
+.contactInfo .circle.crimson{
+    background-color: crimson;
+}
+.contactInfo .circle .text {
+    display: none;
+    transition: opacity 0.3s ease;
+}
+.contactInfo .circle .visible {
+    display: block;
+}
+.contactInfo .circle p{
+    height:10vh;
+    font-size: 0.9em;
+    color: beige;
+    margin-bottom: 30px;
+}
+.contactForm{ /* To select div right */
+    width:100%;
+    height: 400px;
+}
+.contactForm h3{
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700;     
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+form{
+    width:100%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+/* -------- To select everything in the input ------------ */
+
+input{
+    font-family: "Montserrat", sans-serif; 
+    font-weight: 400;
+    color: beige;
+}
+input::placeholder{
+    color: rgb(0, 0, 255);
+    text-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.1);
+}
+.input[type="text"],
+.input[type="email"]{
+    width:100%;    
+    height:3%;
+    display: block;
+    border: 2px solid beige;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 10px;
+    text-align:start;
+}
+.input[type="message"]{
+    width:100%;
+    height:50%;
+    display: block;
+    border: 2px solid beige;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 10px;
+}
+.submit{ /* To select the submit */
+    width:130px;
+    height: 40px;
+    background-color:blue;
+    color: beige;
+    font-family: "Fjalla One", sans-serif; 
+    font-weight: 700; 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 1.1em;
+}
+
+
+/* -------  To select the footer ----------- */
+
+footer{ /* the header positioned in the center of the viewport */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 20px;
+}
+footer h2{
+    font-family: "Fjalla One", sans-serif; /* The secundary font for titles */
+    font-weight: 700;  /* The weight of the font so it's visually bold */    
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+
+/* -------  To make the website Responsive for different screen sizes ----------- */
+
+@media screen and (max-width:1200px){
+    .main h1{ 
+        font-size:9em;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:800px){ /* some changes for smaller screens like tablets or some computers */
+    .main h1{ /* smaller size */
+        font-size:6em;
+        margin-top: 5%;
+    }
+    nav ul{
+        gap: 10px;
+    }
+    nav a{
+        font-size: 2em;    
+    }
+    nav i{ 
+        font-size: 2.5em;
+    }
+    .form{
+        width:100%;
+        max-width:620px;
+        padding:50px;
+    }
+    .contactInfo{ /* To select div left */
+        width: 80%;        
+        margin-right: 50px;   
+    }
+    .contactInfo h2{
+        font-family: "Fjalla One", sans-serif; 
+        font-weight: 700; 
+        font-size: 2.3em;
+        margin-bottom: 5vh;
+    }
+    .contactInfo .circle{ /* to select the circled container */
+        width:250px;
+        height:250px;
+        border-radius: 50%;
+        background-color: blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        padding: 8%;
+        border: solid 5px black;
+    }
+}
+
+
+@media screen and (min-width:150px) and (max-width:480px){ /* some changes for for phones */
+    .main h1{ /* even smaller size */
+        font-size:4em;
+        margin-top: 5%;
+    }
+    nav ul{
+        gap: 5px;
+    }
+    nav a{
+        font-size: 1.5em;    
+    }
+    nav i{ 
+        font-size: 2em;
+    }
+    .form{
+        width:100%;
+        height: 100vh;
+        max-width:420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contactInfo{ /* To select div left */
+        width: 80%;  
+        margin-right: 0;      
+        margin-bottom: 50px;   
+    }
+    .contactInfo h2{
+        font-family: "Fjalla One", sans-serif; 
+        font-weight: 700; 
+        font-size: 2.3em;
+        margin-top: 7vh;
+        margin-bottom: 5vh;
+    }
+    .contactInfo .circle{ /* to select the circled container */
+        width:250px;
+        height:250px;
+        border-radius: 50%;
+        background-color: blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        padding: 8%;
+        border: solid 5px black;
+    }
+    .contactInfo .circle p{
+        font-size: 0.8em;
+    }
+}
